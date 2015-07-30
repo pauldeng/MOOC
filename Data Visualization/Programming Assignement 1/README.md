@@ -37,7 +37,7 @@ Alongside your visualizations, feel free to include a paragraph that helps expla
 
 A few questions that your paragraph could answer:
 
-What are your X and Y axes?
-Did you use a subset of the data? If so, what was it?
-Are there any particular aspects of your visualization to which you would like to bring attention?
-What do you think the data, and your visualization, shows?
+1. What are your X and Y axes?
+2. Did you use a subset of the data? If so, what was it?
+3. Are there any particular aspects of your visualization to which you would like to bring attention?
+4. What do you think the data, and your visualization, shows?
