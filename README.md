@@ -13,6 +13,10 @@ My knowledge repo of MOOC courses.
 * Cloud Computing Specialization
   * [Cloud Computing Concepts](https://www.coursera.org/account/accomplishments/records/HeY3QT4amAjVxawt)
   * [Cloud Computing Concepts: Part 2](https://www.coursera.org/account/accomplishments/records/MtzjZ3ycXmhQZAYm)
+ 
+* Data Mining with Weka
+  * [Data Mining with Weka](http://d2t72jqww3n6av.cloudfront.net/wp-content/uploads/2015/05/mooc-certificate-final178.png)
+  * [More Data Mining with Weka](http://d2t72jqww3n6av.cloudfront.net/wp-content/uploads/2015/07/weka-Certificate.png)
 
 ### 2014
 * Android Specialization
@@ -21,4 +25,5 @@ My knowledge repo of MOOC courses.
   * [Pattern-Oriented Software Architectures: Programming Mobile Services for Android Handheld Systems](https://www.coursera.org/account/accomplishments/records/s7WAPUb2ChNyR6K4)
 
 * [An Introduction to Interactive Programming in Python](https://www.coursera.org/account/accomplishments/records/C6ukS3LuuwtzxMpd)
+
 * Mining Massive Datasets
