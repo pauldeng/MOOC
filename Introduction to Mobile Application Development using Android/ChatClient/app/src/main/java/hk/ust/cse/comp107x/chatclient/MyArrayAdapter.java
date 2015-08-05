@@ -34,11 +34,26 @@ public class MyArrayAdapter extends ArrayAdapter<Message> {
         if (messages.get(position).fromMe()) {
 
             //TODO
+            messageView = inflater.inflate(R.layout.mymessage, parent, false);
+
+            TextView myMsgView = (TextView) messageView.findViewById(R.id.mymessageTextView);
+            myMsgView.setText(messages.get(position).getMessage());
+
+            TextView myTimeView = (TextView) messageView.findViewById(R.id.mytimeTextView);
+            myTimeView.setText(messages.get(position).getTime());
+
 
         } else {
 
             //TODO
             
+            messageView = inflater.inflate(R.layout.message, parent, false);
+
+            TextView msgView = (TextView) messageView.findViewById(R.id.messageTextView);
+            msgView.setText(messages.get(position).getMessage());
+
+            TextView timeView = (TextView) messageView.findViewById(R.id.timeTextView);
+            timeView.setText(messages.get(position).getTime());
         }
 
         return messageView;
