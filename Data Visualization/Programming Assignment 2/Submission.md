@@ -1,7 +1,7 @@
 # Data Visualization: Programming Assignment 2 Submission
 
 ## Overview
-This file implements [Programming Assignment 1: Visualize Data Using a Chart](https://github.com/pauldeng/MOOC/blob/master/Data%20Visualization/Programming%20Assignment%201/README.md) for the Coursera [Data Visualization](https://class.coursera.org/datavisualization-001) Class, Aug 2015.
+This file implements [Programming Assignment 2: Visualize Network Data](https://github.com/pauldeng/MOOC/tree/master/Data%20Visualization/Programming%20Assignment%202) for the Coursera [Data Visualization](https://class.coursera.org/datavisualization-001) Class, Aug 2015.
 
 ## The Data
 [High school contact and friendship networks](http://www.sociopatterns.org/datasets/high-school-contact-and-friendship-networks/)
