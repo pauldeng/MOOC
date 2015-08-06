@@ -13,11 +13,11 @@ The data is directed, unweighted friendship network from surveys, space separate
 * Inkscape
 
 ## Submission
-![Image of Friendship](https://raw.githubusercontent.com/pauldeng/MOOC/master/Data%20Visualization/Programming%20Assignment%201/Global%20Annual%20Mean%20Temperature%20Difference.png).
+![Image of Friendship](https://raw.githubusercontent.com/pauldeng/MOOC/master/Data%20Visualization/Programming%20Assignment%202/Graphics/Friendship_Legend_Small.jpg)
 
-* [GV source file]()
-* [Large PNG file]()
-* []SVG file]() (Please open with Inkscape)
+* [GV source file](https://github.com/pauldeng/MOOC/blob/master/Data%20Visualization/Programming%20Assignment%202/Data/graph_source_file.gv)
+* [Large PNG file](https://github.com/pauldeng/MOOC/raw/master/Data%20Visualization/Programming%20Assignment%202/Graphics/Friendship_Legend.png)
+* [SVG file](https://github.com/pauldeng/MOOC/blob/master/Data%20Visualization/Programming%20Assignment%202/Graphics/Friendship.svg)
 
 This graph visualizes friendship relations between students in a high school in Marseilles, France, in December 2013, as measured through several techniques.
 
