@@ -22,7 +22,7 @@ My knowledge repo of MOOC courses.
   * [Data Mining with Weka](http://d2t72jqww3n6av.cloudfront.net/wp-content/uploads/2015/05/mooc-certificate-final178.png)
   * [More Data Mining with Weka](http://d2t72jqww3n6av.cloudfront.net/wp-content/uploads/2015/07/weka-Certificate.png)
   
-* Scalable Machine Learning
+* [Scalable Machine Learning](https://verify.edx.org/cert/8efb20cb0b3847c7a352ef352ecad647)
 
 * Introduction to Mobile Application Development using Android
 
