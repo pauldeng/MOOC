@@ -1,0 +1,55 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".MainActivity">
+
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar"
+        android:elevation="5dp">
+    </include>
+
+    <hk.ust.cse.comp107x.shootinggamescore.DrawView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/drawView"
+        android:layout_above="@+id/control_buttons"
+        android:layout_below="@+id/tool_bar" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/control_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_vertical|center_horizontal"
+        android:background="@color/primary_dark"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/moveLeftButton"
+            android:src="@drawable/ic_arrow_back_white_48dp"
+            android:background="@null"
+            android:layout_marginRight="100dp" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/shootButton"
+            android:src="@drawable/ic_adjust_white_48dp"
+            android:background="@null" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/moveRightButton"
+            android:src="@drawable/ic_arrow_forward_white_48dp"
+            android:background="@null"
+            android:layout_marginLeft="100dp" />
+    </LinearLayout>
+
+</RelativeLayout>
