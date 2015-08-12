@@ -9,6 +9,7 @@ My knowledge repo of MOOC courses.
   * [Text Retrieval and Search Engines](https://www.coursera.org/account/accomplishments/records/RXbqtzh9mEGGY5BR)
   * [Cluster Analysis in Data Mining](https://www.coursera.org/account/accomplishments/records/hhtPEBvw3tVGavXe)
   * [Text Mining and Analytics](https://www.coursera.org/account/accomplishments/records/GbKAQGNNBFXDAEPK)
+  * Data Visualisation
   * Data Mining Capstone
 
 * Cloud Computing Specialization
