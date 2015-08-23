@@ -49,6 +49,7 @@ public class Bullet {
         // then remove the bullet
         if (y - radius < 0) {
             // TODO Make the sound corresponding to the bullet leaving from top of screen
+            SoundEffects.INSTANCE.playSound(SoundEffects.SOUND_BULLET);
             return false;
         }
         else

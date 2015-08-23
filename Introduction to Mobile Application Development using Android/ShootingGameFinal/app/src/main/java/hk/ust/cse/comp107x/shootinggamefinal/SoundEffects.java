@@ -54,6 +54,8 @@ public enum SoundEffects {
         mSoundPoolMap = new HashMap<Integer, Integer>();
         mSoundPoolMap.put(SOUND_EXPLOSION, mSoundPool.load(context, R.raw.explosion,1));
        // TODO Add sounds corresponding to the bullet and Android Guy
+        mSoundPoolMap.put(SOUND_BULLET, mSoundPool.load(context, R.raw.beep9,1));
+        mSoundPoolMap.put(SOUND_GUY, mSoundPool.load(context, R.raw.beep4,1));
 
         mAudioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
         streamVolume = mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);

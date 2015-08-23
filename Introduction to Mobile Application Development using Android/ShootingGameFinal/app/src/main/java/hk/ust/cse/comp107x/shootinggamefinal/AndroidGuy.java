@@ -52,6 +52,7 @@ public class AndroidGuy {
             x = (float) ((upperX-50)*Math.random());
             y = 0;
             // TODO Make the sound corresponding to the Android Guy falling down the bottom of screen
+            SoundEffects.INSTANCE.playSound(SoundEffects.SOUND_GUY);
             return true;
         }
         else
