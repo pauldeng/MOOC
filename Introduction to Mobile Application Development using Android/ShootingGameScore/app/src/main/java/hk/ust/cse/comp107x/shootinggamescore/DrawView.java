@@ -43,6 +43,7 @@ public class DrawView extends View {
         androidGuy = new AndroidGuy(Color.RED, mContext);
 
         // TODO create a new score object with Color.BLACK color
+        score = new Score(Color.BLACK);
 
 
     }
@@ -128,6 +129,7 @@ public class DrawView extends View {
                     androidGuy.reset();
                     bullets.remove(i);
                     // TODO increment score
+                    score.incrementScore();
                     break;
                 }
 
@@ -138,6 +140,7 @@ public class DrawView extends View {
             }
         }
         // TODO show the score on the screen
+        score.draw(canvas);
 
     }
 

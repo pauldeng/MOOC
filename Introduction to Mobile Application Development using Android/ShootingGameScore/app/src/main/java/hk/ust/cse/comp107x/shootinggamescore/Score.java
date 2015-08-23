@@ -21,14 +21,17 @@ public class Score {
         paint.setColor(color);
 
         // TODO initialize score
+        score = 0;
     }
 
     public void incrementScore() {
         // TODO Increment score
+        this.score++;
     }
 
     public void decrementScore() {
         // TODO Decrement score
+        this.score--;
     }
 
     public int getScore() { return score; }
@@ -37,5 +40,6 @@ public class Score {
 
         // TODO use drawText(String, x co-ordinate, y-coordinate, paint) to
         // draw text on the canvas. Position the text at (10,30).
+        canvas.drawText("Score: " + String.valueOf(score), 10, 30, paint);
     }
 }
