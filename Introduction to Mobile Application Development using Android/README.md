@@ -7,7 +7,8 @@ Course Address: https://www.edx.org/course/introduction-mobile-application-hkust
 1. Week 1: TimeGreetFriend
 2. Week 2: ChatClient
 3. Week 3: ShootingGameWithScores
-4. Week 34: ShootingGameFinal
+4. Week 4: ShootingGameFinal
+5. Week 5: ChatClientNetworkFinal
 
 
 
