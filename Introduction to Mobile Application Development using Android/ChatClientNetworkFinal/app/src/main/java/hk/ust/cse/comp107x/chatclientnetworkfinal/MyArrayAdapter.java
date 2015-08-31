@@ -44,6 +44,18 @@ public class MyArrayAdapter extends ArrayAdapter<Contacts.FriendInfo> {
         ImageView imageView = (ImageView) friendInfoView.findViewById(R.id.avatar);
 
         // TODO Asynchronously load the images from the server using Picasso.
+        try{
+            Picasso.with(context)
+                    .load(Constants.SERVER+friendInfoList.get(position).imageURL)
+                    .resize(50, 50)
+                    .centerCrop()
+                    .into(imageView);
+        }catch(Exception e){
+            Picasso.with(context).load("file:///ic_launcher/ic_launcher.png")
+                    .placeholder(R.mipmap.ic_launcher)
+                    .error(R.mipmap.ic_launcher)
+                    .into(imageView);
+        }
 
         return friendInfoView;
     }
