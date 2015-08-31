@@ -1,0 +1,28 @@
+{
+  "people": [
+    {
+      "id": 1,
+      "name": "John",
+      "statusMsg": "Imagine all the people ...",
+      "imageURL": "John.png"
+    },
+    {
+      "id": 2,
+      "name": "Paul",
+      "statusMsg": "Let it be ...",
+      "imageURL": "Paul.png"
+    },
+    {
+      "id": 3,
+      "name": "George",
+      "statusMsg": "Wait mister postman ...",
+      "imageURL": "George.png"
+    },
+    {
+      "id": 4,
+      "name": "Ringo",
+      "statusMsg": "Yellow submarine ...",
+      "imageURL": "Ringo.png"
+    }
+  ]
+}
