@@ -51,25 +51,125 @@ public class TopPopularLinks extends Configured implements Tool {
     @Override
     public int run(String[] args) throws Exception {
         // TODO
+        Configuration conf = this.getConf();
+        FileSystem fs = FileSystem.get(conf);
+        Path tmpPath = new Path("/mp2/tmp");
+        fs.delete(tmpPath, true);
+
+        Job jobA = Job.getInstance(conf, "Link Count");
+        jobA.setOutputKeyClass(IntWritable.class);
+        jobA.setOutputValueClass(IntWritable.class);
+
+        jobA.setMapOutputKeyClass(IntWritable.class);
+        jobA.setMapOutputValueClass(IntWritable.class);
+        
+        jobA.setMapperClass(LinkCountMap.class);
+        jobA.setReducerClass(LinkCountReduce.class);
+
+        FileInputFormat.setInputPaths(jobA, new Path(args[0]));
+        FileOutputFormat.setOutputPath(jobA, tmpPath);
+
+        jobA.setJarByClass(TopPopularLinks.class);
+        jobA.waitForCompletion(true);
+
+        Job jobB = Job.getInstance(conf, "Top Links");
+        jobB.setOutputKeyClass(IntWritable.class);
+        jobB.setOutputValueClass(IntWritable.class);
+
+        jobB.setMapOutputKeyClass(NullWritable.class);
+        jobB.setMapOutputValueClass(IntArrayWritable.class);
+
+        jobB.setMapperClass(TopLinksMap.class);
+        jobB.setReducerClass(TopLinksReduce.class);
+        jobB.setNumReduceTasks(1);
+
+        FileInputFormat.setInputPaths(jobB, tmpPath);
+        FileOutputFormat.setOutputPath(jobB, new Path(args[1]));
+
+        jobB.setInputFormatClass(KeyValueTextInputFormat.class);
+        jobB.setOutputFormatClass(TextOutputFormat.class);
+
+        jobB.setJarByClass(TopPopularLinks.class);
+        return jobB.waitForCompletion(true) ? 0 : 1;
     }
 
     public static class LinkCountMap extends Mapper<Object, Text, IntWritable, IntWritable> {
+        public static final Log log = LogFactory.getLog(LinkCountMap.class);
+        
         // TODO
-    }
+        @Override
+        public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
+            String line = value.toString();
+            StringTokenizer tokenizer = new StringTokenizer(line, ":");
+            int itemCount = 0, lineCount = 0;
+            if (tokenizer.hasMoreTokens()) {
+                String nextToken = tokenizer.nextToken();
+                Integer fromPage = Integer.parseInt(nextToken);
+                lineCount++;
+                itemCount++;
+                context.write(new IntWritable(fromPage), new IntWritable(0));
+                
+                if (tokenizer.hasMoreTokens()) {
+                    nextToken = tokenizer.nextToken().trim();
+                    StringTokenizer token2 = new StringTokenizer(nextToken, " ");
+                    while (token2.hasMoreTokens()) {
+                        String nextT2 = token2.nextToken();
+                        Integer toPage = Integer.parseInt(nextT2.trim());
+                        if (toPage > 0) {
+                            itemCount++;
+                            context.write(new IntWritable(toPage), new IntWritable(1));
+                        }
+                    }
+                }
+            }
+            
+            // write Hadoop log
+            log.info("lineCount" + lineCount + ", itemCount: " + itemCount);
+        }
+    }        
 
     public static class LinkCountReduce extends Reducer<IntWritable, IntWritable, IntWritable, IntWritable> {
         // TODO
+        @Override
+        public void reduce(IntWritable key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
+            int sum = 0;
+            for (IntWritable val : values) {
+                sum += val.get();
+            }
+            context.write(key, new IntWritable(sum));
+        }
     }
 
     public static class TopLinksMap extends Mapper<Text, Text, NullWritable, IntArrayWritable> {
         Integer N;
-
+    
         @Override
         protected void setup(Context context) throws IOException,InterruptedException {
             Configuration conf = context.getConfiguration();
             this.N = conf.getInt("N", 10);
         }
+        
         // TODO
+        private TreeSet<Pair<Integer, Integer>> countToLinkMap = new TreeSet<Pair<Integer, Integer>>();
+        @Override
+        public void map(Text key, Text value, Context context) throws IOException, InterruptedException {
+            Integer count = Integer.parseInt(value.toString());
+            Integer link = Integer.parseInt(key.toString());
+            
+            countToLinkMap.add(new Pair<Integer, Integer>(count, link));
+            if (countToLinkMap.size() > this.N) {
+                countToLinkMap.remove(countToLinkMap.first());
+            }
+        }
+
+        @Override
+        protected void cleanup(Context context) throws IOException, InterruptedException {
+            for (Pair<Integer, Integer> item : countToLinkMap) {
+                Integer[] integers = {item.second, item.first};
+                IntArrayWritable val = new IntArrayWritable(integers);
+                context.write(NullWritable.get(), val);
+            }
+        }
     }
 
     public static class TopLinksReduce extends Reducer<NullWritable, IntArrayWritable, IntWritable, IntWritable> {
@@ -81,6 +181,26 @@ public class TopPopularLinks extends Configured implements Tool {
             this.N = conf.getInt("N", 10);
         }
         // TODO
+        private TreeSet<Pair<Integer, Integer>> countToLinkMap = new TreeSet<Pair<Integer, Integer>>();
+        public void reduce(NullWritable key, Iterable<IntArrayWritable> values, Context context) throws IOException, InterruptedException {
+            for (IntArrayWritable val : values) {
+                IntWritable[] pair = (IntWritable[]) val.toArray();
+                
+                Integer link = (Integer)(pair[0].get());
+                Integer count = (Integer)(pair[1].get());
+                
+                countToLinkMap.add(new Pair<Integer, Integer>(count, link));
+                if (countToLinkMap.size() > this.N) {
+                    countToLinkMap.remove(countToLinkMap.first());
+                }
+            }
+
+            for (Pair<Integer, Integer> item : countToLinkMap) {
+                IntWritable link = new IntWritable(item.second);
+                IntWritable value = new IntWritable(item.first);
+                context.write(link, value);
+            }
+        }
     }
 }
 
