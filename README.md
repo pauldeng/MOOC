@@ -25,7 +25,7 @@ My knowledge repo of MOOC courses.
   
 * [Scalable Machine Learning](https://verify.edx.org/cert/8efb20cb0b3847c7a352ef352ecad647)
 
-* Introduction to Mobile Application Development using Android
+* [Introduction to Mobile Application Development using Android](https://verify.edx.org/cert/508bf564e0e24ac3ba2f640277e6eeb0)
 
 
 ### 2014
