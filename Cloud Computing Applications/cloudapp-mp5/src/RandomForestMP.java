@@ -15,6 +15,33 @@ import java.util.HashMap;
 import java.util.regex.Pattern;
 
 public final class RandomForestMP {
+	private static class ParseTrainData implements Function<String, LabeledPoint> {
+		private static final Pattern SPACE = Pattern.compile(",");
+
+		public LabeledPoint call(String line) throws Exception {
+			String[] tok = SPACE.split(line);
+			double label = Double.parseDouble(tok[tok.length-1]);
+			double[] point = new double[tok.length-1];
+			for (int i = 0; i < tok.length - 1; ++i) {
+				point[i] = Double.parseDouble(tok[i]);
+			}
+			return new LabeledPoint(label, Vectors.dense(point));
+		}
+	}
+	
+	private static class ParseTestData implements Function<String, Vector> {
+        private static final Pattern SPACE = Pattern.compile(",");
+
+        public Vector call(String line) {
+            String[] tok = SPACE.split(line);
+            double[] point = new double[tok.length-1];
+            for (int i = 0; i < tok.length - 1; ++i) {
+                point[i] = Double.parseDouble(tok[i]);
+            }
+            return Vectors.dense(point);
+        }
+    }
+	
 
     public static void main(String[] args) {
         if (args.length < 3) {
@@ -40,7 +67,12 @@ public final class RandomForestMP {
         Integer seed = 12345;
 
 		// TODO
-
+        JavaRDD<LabeledPoint> train = sc.textFile(training_data_path).map(new ParseTrainData());
+        JavaRDD<Vector> test = sc.textFile(test_data_path).map(new ParseTestData());
+		
+		model = RandomForest.trainClassifier(train, numClasses, categoricalFeaturesInfo, numTrees, featureSubsetStrategy, impurity, maxDepth, maxBins, seed);
+		
+		
         JavaRDD<LabeledPoint> results = test.map(new Function<Vector, LabeledPoint>() {
             public LabeledPoint call(Vector points) {
                 return new LabeledPoint(model.predict(points), points);
