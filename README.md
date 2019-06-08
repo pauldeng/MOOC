@@ -6,6 +6,8 @@ My knowledge repo of MOOC courses.
 ### 2019
 * Golang
   * [Getting Started with Go](https://www.coursera.org/account/accomplishments/records/9VZ7G45L2WD8)
+  * [Functions, Methods, and Interfaces in Go]
+  * [Concurrency in Go]
 
 ### 2015
 * Data Mining Specialization
